@@ -5,12 +5,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IColorDal
+    public interface IColorDal : IEntityRepository<Colors>
     {
-        List<Colors> GetAll();
-        Colors GetById(int colorId);
-        void Add(Colors color);
-        void Update(Colors color);
-        void Delete(Colors color);
     }
 }
