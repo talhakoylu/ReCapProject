@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Entities.Abstract;
+using Core.Entities;
 
 namespace Entities.Concrete
 {
