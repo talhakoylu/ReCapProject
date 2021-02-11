@@ -22,22 +22,22 @@ namespace ConsoleUI
             });
             
             Console.WriteLine("\n=============GetAll=============");
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine($"CarId: {car.CarId}   BrandId: {car.BrandId}   ColorId: {car.ColorId}   " +
                                   $"Description: {car.Description}   DailyPrice: {car.DailyPrice}   ModelYear: {car.ModelYear}");
             }
 
             Console.WriteLine("\n=============GetCarsDetailDTO=============");
-            foreach (var car in carManager.GetCarsDetailDto())
+            foreach (var car in carManager.GetCarsDetailDto().Data)
             {
                 Console.WriteLine($"{car.Description}   {car.ColorName}   {car.BrandName}   {car.DailyPrice}");
             }
 
             Console.WriteLine("\n=============GetCarById=============");
             var id4Car = carManager.GetById(4);
-            Console.WriteLine($"CarId: {id4Car.CarId}   BrandId: {id4Car.BrandId}   ColorId: {id4Car.ColorId}   " +
-                              $"Description: {id4Car.Description}   DailyPrice: {id4Car.DailyPrice}   ModelYear: {id4Car.ModelYear}");
+            Console.WriteLine($"CarId: {id4Car.Data.CarId}   BrandId: {id4Car.Data.BrandId}   ColorId: {id4Car.Data.ColorId}   " +
+                              $"Description: {id4Car.Data.Description}   DailyPrice: {id4Car.Data.DailyPrice}   ModelYear: {id4Car.Data.ModelYear}");
         }
     }
 }
