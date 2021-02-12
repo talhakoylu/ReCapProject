@@ -22,6 +22,21 @@ namespace Business.Constants
         public static string ColorAddSuccess = "Renk başarılı bir şekilde eklendi.";
         public static string ColorUpdateSuccess = "Renk başarılı bir şekilde güncellendi.";
         public static string ColorDeleteSuccess = "Renk başarılı bir şekilde silindi.";
-
+        //user
+        public static string UserAddSuccess = "Kullanıcı başarılı bir şekilde eklendi.";
+        public static string UserUpdateSuccess = "Kullanıcı başarılı bir şekilde güncellendi.";
+        public static string UserDeleteSuccess = "Kullanıcı başarılı bir şekilde silindi.";
+        public static string UserGetAllSuccess = "Kullanıcı listesi başarılı bir şekilde getirildi.";
+        //customer
+        public static string CustomerAddSuccess = "Müşteri başarılı bir şekilde eklendi.";
+        public static string CustomerUpdateSuccess = "Müşteri başarılı bir şekilde güncellendi.";
+        public static string CustomerDeleteSuccess = "Müşteri başarılı bir şekilde silindi.";
+        public static string CustomerGetAllSuccess = "Müşteri listesi başarılı bir şekilde getirildi.";
+        //customer
+        public static string RentalAddSuccess = "Araç kiralama başarılı.";
+        public static string RentalAddError = "Araç kiralama başarısız, araç kullanımda.";
+        public static string RentalUpdateSuccess = "Kiralama bilgileri başarılı bir şekilde güncellendi.";
+        public static string RentalDeleteSuccess = "Kiralama bilgileri başarılı bir şekilde silindi.";
+        public static string RentalGetAllSuccess = "Kiralama listesi başarılı bir şekilde getirildi.";
     }
 }
