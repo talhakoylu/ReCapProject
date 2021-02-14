@@ -20,12 +20,23 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
+            var result = _brandDal.GetAll();
+            if (result == null)
+            {
+                return new ErrorDataResult<List<Brand>>(Messages.BrandGetAllError);
+            }
+
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandGetAllSuccess);
         }
 
         public IDataResult<Brand> GetById(int brandId)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId));
+            var result = _brandDal.Get(b => b.BrandId == brandId);
+            if (result == null)
+            {
+                return new ErrorDataResult<Brand>(Messages.BrandGetError);
+            }
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId), Messages.BrandGetSuccess);
         }
 
         public IResult Add(Brand brand)
@@ -41,14 +52,24 @@ namespace Business.Concrete
 
         public IResult Update(Brand brand)
         {
+            var result = _brandDal.Get(b => b.BrandId == brand.BrandId);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.BrandUpdateError);
+            }
             _brandDal.Update(brand);
-            return new SuccessResult(Messages.BrandDeleteSuccess);
+            return new SuccessResult(Messages.BrandUpdateSuccess);
         }
 
         public IResult Delete(Brand brand)
         {
+            var result = _brandDal.Get(b => b.BrandId == brand.BrandId);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.BrandDeleteError);
+            }
             _brandDal.Delete(brand);
-            return new SuccessResult(Messages.BrandUpdateSuccess);
+            return new SuccessResult(Messages.BrandDeleteSuccess);
         }
     }
 }
