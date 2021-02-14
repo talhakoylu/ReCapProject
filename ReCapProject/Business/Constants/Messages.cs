@@ -17,7 +17,17 @@ namespace Business.Constants
         public static string CarAddErrorName = "Araç ismi en az 3 karakter olmalıdır.";
         public static string CarAddSuccess = "Araç başarılı bir şekilde eklendi.";
         public static string CarUpdateSuccess = "Araç başarılı bir şekilde güncellendi.";
+        public static string CarUpdateError = "Geçerli bir araç seçiniz.";
         public static string CarDeleteSuccess = "Araç başarılı bir şekilde silindi.";
+        public static string CarDeleteError = "Lütfen geçerli bir araç seçiniz.";
+        public static string CarGetAllSuccess = "Araçlar başarılı bir şekilde listelendi.";
+        public static string CarGetAllError = "Araçlar getirilirken bir sorunla karşılaşıldı.";
+        public static string CarGetByIdError = "Araç bulunamadı.";
+        public static string CarGetByIdSuccess = "Araç bilgilerine başarılı bir şekilde erişildi.";
+        public static string CarGetCarsByBrandIdSuccess = "Markaya göre araç bilgilerine başarılı bir şekilde erişildi.";
+        public static string CarGetCarsByBrandIdError = "Lütfen geçerli bir marka seçiniz.";
+        public static string CarGetCarsByColorIdSuccess = "Renge göre araç bilgilerine başarılı bir şekilde erişildi.";
+        public static string CarGetCarsByColorIdError = "Lütfen geçerli bir renk seçiniz.";
         //color
         public static string ColorAddSuccess = "Renk başarılı bir şekilde eklendi.";
         public static string ColorUpdateSuccess = "Renk başarılı bir şekilde güncellendi.";
