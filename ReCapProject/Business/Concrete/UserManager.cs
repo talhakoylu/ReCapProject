@@ -4,9 +4,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -21,11 +24,8 @@ namespace Business.Concrete
 
         public IResult Add(User user)
         {
-            if (user.FirstName.Length < 2)
-            {
-                return new ErrorResult(Messages.UserAddErrorName);
-            }
-            
+            ValidationTool.Validate(new UserValidator(), user);
+
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAddSuccess);
         }
@@ -68,6 +68,9 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.UserUpdateError);
             }
+
+            ValidationTool.Validate(new UserValidator(), user);
+            
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdateSuccess);
         }

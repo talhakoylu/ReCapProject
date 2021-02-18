@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -30,18 +33,34 @@ namespace Business.Concrete
 
         public IResult Add(Customer customer)
         {
+            ValidationTool.Validate(new CustomerValidator(), customer);
+
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAddSuccess);
         }
 
         public IResult Update(Customer customer)
         {
+            var result = _customerDal.Get(c => c.UserId == customer.UserId);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.CustomerUpdateError);
+            }
+
+            ValidationTool.Validate(new CustomerValidator(), customer);
+
             _customerDal.Update(customer);
             return new SuccessResult(Messages.CustomerUpdateSuccess);
         }
 
         public IResult Delete(Customer customer)
         {
+            var result = _customerDal.Get(c => c.UserId == customer.UserId);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.CustomerDeleteError);
+            }
+
             _customerDal.Delete(customer);
             return new SuccessResult(Messages.CustomerDeleteSuccess);
         }

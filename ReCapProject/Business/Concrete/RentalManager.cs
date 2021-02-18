@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -46,20 +49,35 @@ namespace Business.Concrete
                 }
             }
 
+            ValidationTool.Validate(new RentalValidator(), rental);
+
             _rentalDal.Add(rental);
-            
             return new SuccessResult(Messages.RentalAddSuccess);
 
         }
 
         public IResult Update(Rental rental)
         {
+            var result = _rentalDal.Get(c => c.Id == rental.Id);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.RentalUpdateError);
+            }
+
+            ValidationTool.Validate(new RentalValidator(), rental);
+
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdateSuccess);
         }
 
         public IResult Delete(Rental rental)
         {
+            var result = _rentalDal.Get(c => c.Id == rental.Id);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.RentalDeleteError);
+            }
+
             _rentalDal.Delete(rental);
             return new SuccessResult(Messages.RentalDeleteSuccess);
         }

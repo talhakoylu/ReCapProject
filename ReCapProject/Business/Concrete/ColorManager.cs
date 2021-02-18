@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -40,10 +43,8 @@ namespace Business.Concrete
 
         public IResult Add(Color color)
         {
-            if (color.ColorName.Length < 2)
-            {
-                return new ErrorResult(Messages.ColorAddErrorName);
-            }
+            ValidationTool.Validate(new ColorValidator(), color);
+
             _colorDal.Add(color);
             return new SuccessResult(Messages.ColorAddSuccess);
         }
@@ -55,6 +56,9 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.ColorUpdateError);
             }
+
+            ValidationTool.Validate(new ColorValidator(), color);
+
             _colorDal.Update(color);
             return new SuccessResult(Messages.ColorUpdateSuccess);
         }
@@ -66,6 +70,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.ColorDeleteError);
             }
+
             _colorDal.Delete(color);
             return new SuccessResult(Messages.ColorDeleteSuccess);
         }

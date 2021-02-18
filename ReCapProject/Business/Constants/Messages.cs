@@ -59,13 +59,23 @@ namespace Business.Constants
         //customer
         public static string CustomerAddSuccess = "Müşteri başarılı bir şekilde eklendi.";
         public static string CustomerUpdateSuccess = "Müşteri başarılı bir şekilde güncellendi.";
+        public static string CustomerUpdateError = "Lütfen geçerli bir müşteri bilgisi giriniz.";
         public static string CustomerDeleteSuccess = "Müşteri başarılı bir şekilde silindi.";
+        public static string CustomerDeleteError = "Lütfen geçerli bir müşteri bilgisi giriniz.";
         public static string CustomerGetAllSuccess = "Müşteri listesi başarılı bir şekilde getirildi.";
-        //customer
+        //rental
         public static string RentalAddSuccess = "Araç kiralama başarılı.";
         public static string RentalAddError = "Araç kiralama başarısız, araç kullanımda.";
         public static string RentalUpdateSuccess = "Kiralama bilgileri başarılı bir şekilde güncellendi.";
+        public static string RentalUpdateError = "Lütfen geçerli bir kiralama işlemi seçiniz.";
         public static string RentalDeleteSuccess = "Kiralama bilgileri başarılı bir şekilde silindi.";
+        public static string RentalDeleteError = "Lütfen geçerli bir kiralama işlemi seçiniz.";
         public static string RentalGetAllSuccess = "Kiralama listesi başarılı bir şekilde getirildi.";
+
+        //Validator Messages
+        
+        //for user
+        public static string UserValidatorPasswordError =
+            "Şifre en az 8 karakter uzunluğunda, büyük-küçük harf ve sayı içermelidir.";
     }
 }
