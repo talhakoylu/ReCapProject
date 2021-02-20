@@ -4,6 +4,7 @@ using System.Text;
 using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -38,6 +39,7 @@ namespace Business.Concrete
                 Messages.RentalGetAllSuccess);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             var results = _rentalDal.GetAll(r => r.CarId == rental.CarId);
@@ -49,13 +51,12 @@ namespace Business.Concrete
                 }
             }
 
-            ValidationTool.Validate(new RentalValidator(), rental);
-
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalAddSuccess);
 
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
             var result = _rentalDal.Get(c => c.Id == rental.Id);
@@ -63,8 +64,6 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.RentalUpdateError);
             }
-
-            ValidationTool.Validate(new RentalValidator(), rental);
 
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdateSuccess);
