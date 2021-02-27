@@ -7,6 +7,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -33,10 +34,10 @@ namespace Business.Concrete
 
         public IResult Delete(User user)
         {
-            var result = _userDal.Get(u => u.Id == user.Id);
-            if (result == null)
+            IResult result = BusinessRules.Run(CheckUserExists(user.Id));
+            if (result != null)
             {
-                return new ErrorResult(Messages.UserDeleteError);
+                return result;
             }
             _userDal.Delete(user);
             return new SuccessResult(Messages.UserDeleteSuccess);
@@ -44,34 +45,37 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
-            var result = _userDal.GetAll();
-            if (result == null)
-            {
-                return new ErrorDataResult<List<User>>(Messages.UserGetAllError);
-            }
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserGetAllSuccess);
         }
 
         public IDataResult<User> GetById(int id)
         {
-            var result = _userDal.Get(u => u.Id == id);
-            if (result == null)
-            {
-                return new ErrorDataResult<User>(Messages.UserGetByIdError);
-            }
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.UserGetByIdSuccess);
         }
+
         [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
-            var result = _userDal.Get(u => u.Id == user.Id);
-            if (result == null)
+            IResult result = BusinessRules.Run(CheckUserExists(user.Id));
+            if (result != null)
             {
-                return new ErrorResult(Messages.UserUpdateError);
+                return result;
             }
 
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdateSuccess);
+        }
+
+        //business rules
+        private IResult CheckUserExists(int id)
+        {
+            var result = _userDal.Get(u => u.Id == id);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.UserCheckUserExistsError);
+            }
+
+            return new SuccessResult();
         }
     }
 }

@@ -56,6 +56,7 @@ namespace Business.Constants
         public static string UserGetAllError = "Kullanıcılar getirilemedi, acaba hiç kullanıcı yok mu?";
         public static string UserGetByIdSuccess = "Kullanıcıya başarıyla erişildi.";
         public static string UserGetByIdError = "Geçerli bir kullanıcı seçiniz.";
+        public static string UserCheckUserExistsError = "Kullanıcı bulunamadı gibi duruyor.";
         //customer
         public static string CustomerAddSuccess = "Müşteri başarılı bir şekilde eklendi.";
         public static string CustomerUpdateSuccess = "Müşteri başarılı bir şekilde güncellendi.";
@@ -71,11 +72,23 @@ namespace Business.Constants
         public static string RentalDeleteSuccess = "Kiralama bilgileri başarılı bir şekilde silindi.";
         public static string RentalDeleteError = "Lütfen geçerli bir kiralama işlemi seçiniz.";
         public static string RentalGetAllSuccess = "Kiralama listesi başarılı bir şekilde getirildi.";
+        public static string RentalCheckIsCarReturnError = "Araç hala kullanımda, kiralama gerçekleştirilemez.";
+        public static string RentalCheckRentalExistsError = "Geçerli bir kiralama işlemi seçtiğinizden emin olunuz.";
+        //Car Image
+        public static string CarImageGetAllSuccess = "Tüm resimler başarıyla listelendi.";
+        public static string CarImageGetByIdSuccess = "Resim başarıyla getirildi.";
+        public static string CarImageAddSuccess = "Resim başarıyla eklendi.";
+        public static string CarImageExistsError = "Lütfen geçerli bir resim seçtiğinizden emin olunuz.";
+        public static string CarImageUpdateSuccess = "Görsel başarılı bir şekilde güncellendi.";
+        public static string CarImageDeleteSuccess = "Görsel başarılı bir şekilde silindi.";
+        public static string CarImageImageLimitError = "Aracın makisumum 5 görseli bulunabilir.";
+
 
         //Validator Messages
-        
+
         //for user
         public static string UserValidatorPasswordError =
             "Şifre en az 8 karakter uzunluğunda, büyük-küçük harf ve sayı içermelidir.";
+        
     }
 }
