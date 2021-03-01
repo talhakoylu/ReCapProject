@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
@@ -36,6 +37,7 @@ namespace Business.Concrete
                 Messages.CarImageGetByIdSuccess);
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
@@ -50,6 +52,7 @@ namespace Business.Concrete
             return new SuccessResult("başarılı mesajı buraya gelecek");
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(IFormFile file, CarImage carImage)
         {
@@ -59,19 +62,16 @@ namespace Business.Concrete
             return new SuccessResult("başarılı mesajı buraya gelecek");
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Delete(CarImage carImage)
         {
-            var oldpath = Path.GetFullPath(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath);
-
-            IResult result = BusinessRules.Run(
-                FileHelper.Delete(oldpath));
-
+            IResult result = BusinessRules.Run(CheckImageExists(carImage.Id));
             if (result != null)
             {
                 return result;
             }
-
+            FileHelper.Delete(carImage.ImagePath);
             _carImageDal.Delete(carImage);
             return new SuccessResult();
         }
@@ -122,25 +122,5 @@ namespace Business.Concrete
 
         #endregion
 
-        #region Car Image CRUD Operations
-
-        private IResult ImageDelete(CarImage carImage)
-        {
-            try
-            {
-                File.Delete(carImage.ImagePath);
-            }
-            catch (Exception exception)
-            {
-
-                return new ErrorResult(exception.Message);
-            }
-
-            return new SuccessResult();
-        }
-
-
-
-        #endregion
     }
 }

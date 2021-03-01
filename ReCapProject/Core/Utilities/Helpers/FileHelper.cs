@@ -25,7 +25,6 @@ namespace Core.Utilities.Helpers
             File.Move(sourcepath, result);
             return result;
         }
-
         public static IResult Delete(string path)
         {
             try
@@ -39,7 +38,6 @@ namespace Core.Utilities.Helpers
 
             return new SuccessResult();
         }
-
         public static string Update(string sourcePath, IFormFile file)
         {
             var result = newPath(file);
@@ -59,7 +57,7 @@ namespace Core.Utilities.Helpers
             string fileExtension = ff.Extension;
 
             string path = Environment.CurrentDirectory + @"\wwwroot\uploads\images";
-            var newPath = DateTime.Now.Month + "-" + DateTime.Now.Day + "-" + DateTime.Now.Year + "-" + Guid.NewGuid().ToString("N") + fileExtension;
+            var newPath = DateTime.Now.Month + "-" + DateTime.Now.Day + "-" + DateTime.Now.Year + "-" + Guid.NewGuid().ToString()+ fileExtension;
 
             string result = $@"{path}\{newPath}";
             return result;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
@@ -40,6 +41,7 @@ namespace Business.Concrete
                 Messages.RentalGetAllSuccess);
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
@@ -54,6 +56,7 @@ namespace Business.Concrete
 
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
@@ -67,6 +70,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.RentalUpdateSuccess);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Rental rental)
         {
             var result = BusinessRules.Run(CheckRentalExists(rental.Id));

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
 using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 
@@ -20,7 +21,7 @@ namespace ConsoleUI
                 FirstName = "Mehmet Burak",
                 LastName = "Köylü",
                 Email = "mbkoylu2002@gmail.com",
-                Password = "1234"
+                //Password = "1234"
             });
 
             foreach (var user in userManager.GetAll().Data)

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
+using Core.Entities.Concrete;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation;
 
 namespace Business.Concrete
@@ -24,7 +27,6 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
@@ -32,6 +34,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAddSuccess);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(User user)
         {
             IResult result = BusinessRules.Run(CheckUserExists(user.Id));
@@ -51,6 +54,17 @@ namespace Business.Concrete
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.UserGetByIdSuccess);
+        }
+
+        public IDataResult<User> GetByMail(string email)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email),
+                "usermanager getbymail refactor edilecek alan");
+        }
+
+        public IDataResult<List<OperationClaimDto>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaimDto>>(_userDal.GetClaims(user), "usermanager getclaims refactor edilecek alan");
         }
 
         [ValidationAspect(typeof(UserValidator))]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
@@ -42,6 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == colorId), Messages.ColorGetByIdSuccess);
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
@@ -49,6 +51,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorAddSuccess);
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
@@ -62,6 +65,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorUpdateSuccess);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Color color)
         {
             var result = _colorDal.Get(c => c.ColorId == color.ColorId);

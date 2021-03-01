@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities.Concrete;
 
 namespace Business.Constants
 {
@@ -57,6 +58,13 @@ namespace Business.Constants
         public static string UserGetByIdSuccess = "Kullanıcıya başarıyla erişildi.";
         public static string UserGetByIdError = "Geçerli bir kullanıcı seçiniz.";
         public static string UserCheckUserExistsError = "Kullanıcı bulunamadı gibi duruyor.";
+        public static string UserNotFoundError = "Kullanıcı bulunamadı";
+        public static string UserPasswordError = "Şifre hatalı.";
+        public static string UserLoginSuccessful = "Giriş başarılı.";
+        public static string UserEmailAlreadyExists = "Bu email adresine sahip bir kullanıcı zaten bulunuyor.";
+        public static string UserRegistered = "Kullanıcı başarıyla kayıt edildi.";
+        public static string UserAccessTokenCreatedSuccessful = "Access token başarıyla oluşturuldu.";
+        public static string AuthorizationDenied = "Bu işlem için yetkiniz bulunmuyor.";
         //customer
         public static string CustomerAddSuccess = "Müşteri başarılı bir şekilde eklendi.";
         public static string CustomerUpdateSuccess = "Müşteri başarılı bir şekilde güncellendi.";
@@ -89,6 +97,7 @@ namespace Business.Constants
         //for user
         public static string UserValidatorPasswordError =
             "Şifre en az 8 karakter uzunluğunda, büyük-küçük harf ve sayı içermelidir.";
+
         
     }
 }
