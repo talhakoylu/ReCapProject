@@ -6,6 +6,8 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -25,16 +27,19 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [CacheAspect()]
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalGetAllSuccess);
         }
 
+        [CacheAspect()]
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id));
         }
 
+        [CacheAspect()]
         public IDataResult<List<RentalDetailDto>> GetAllRentalDetail()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(),
@@ -43,6 +48,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspects("IRentalService.Get")]
         public IResult Add(Rental rental)
         {
             var result = BusinessRules.Run(CheckIsCarReturn(rental.CarId));
@@ -58,6 +64,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspects("IRentalService.Get")]
         public IResult Update(Rental rental)
         {
             var result = BusinessRules.Run(CheckRentalExists(rental.Id));
@@ -71,6 +78,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
+        [CacheRemoveAspects("IRentalService.Get")]
         public IResult Delete(Rental rental)
         {
             var result = BusinessRules.Run(CheckRentalExists(rental.Id));

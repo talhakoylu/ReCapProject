@@ -7,6 +7,8 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Entities.Concrete;
 using Core.Utilities.Business;
@@ -28,6 +30,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspects("IUserService.Get")]
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -35,6 +38,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
+        [CacheRemoveAspects("IUserService.Get")]
         public IResult Delete(User user)
         {
             IResult result = BusinessRules.Run(CheckUserExists(user.Id));
@@ -46,28 +50,33 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleteSuccess);
         }
 
+        [CacheAspect()]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserGetAllSuccess);
         }
 
+        [CacheAspect()]
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.UserGetByIdSuccess);
         }
 
+        [CacheAspect()]
         public IDataResult<User> GetByMail(string email)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email),
                 "usermanager getbymail refactor edilecek alan");
         }
 
+        [CacheAspect()]
         public IDataResult<List<OperationClaimDto>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaimDto>>(_userDal.GetClaims(user), "usermanager getclaims refactor edilecek alan");
         }
 
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspects("IUserService.Get")]
         public IResult Update(User user)
         {
             IResult result = BusinessRules.Run(CheckUserExists(user.Id));

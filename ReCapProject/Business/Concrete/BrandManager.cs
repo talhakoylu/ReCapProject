@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Business.Abstract;
+﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac;
-using Core.CrossCuttingConcerns.Validation.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using FluentValidation;
-using ValidationException = FluentValidation.ValidationException;
+using System.Collections.Generic;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -24,7 +19,7 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-
+        [CacheAspect()]
         public IDataResult<List<Brand>> GetAll()
         {
             var result = _brandDal.GetAll();
@@ -35,7 +30,7 @@ namespace Business.Concrete
 
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandGetAllSuccess);
         }
-
+        [CacheAspect()]
         public IDataResult<Brand> GetById(int brandId)
         {
             var result = _brandDal.Get(b => b.BrandId == brandId);
@@ -48,6 +43,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
+        [CacheRemoveAspects("IBrandService.Get")]
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
@@ -56,6 +52,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
+        [CacheRemoveAspects("IBrandService.Get")]
         public IResult Update(Brand brand)
         {
             var result = _brandDal.Get(b => b.BrandId == brand.BrandId);
@@ -69,6 +66,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
+        [CacheRemoveAspects("IBrandService.Get")]
         public IResult Delete(Brand brand)
         {
             var result = _brandDal.Get(b => b.BrandId == brand.BrandId);

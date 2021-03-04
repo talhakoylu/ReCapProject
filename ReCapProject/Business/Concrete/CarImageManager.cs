@@ -8,6 +8,8 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers;
 using Core.Utilities.Results;
@@ -26,11 +28,13 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
 
+        [CacheAspect()]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(), Messages.CarImageGetAllSuccess);
         }
 
+        [CacheAspect()]
         public IDataResult<CarImage> GetById(int id)
         {
             return new SuccessDataResult<CarImage>(_carImageDal.Get(ci => ci.Id == id),
@@ -39,6 +43,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
+        [CacheRemoveAspects("ICarImage.Get")]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageLimit(carImage.CarId));
@@ -54,6 +59,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
+        [CacheRemoveAspects("ICarImage.Get")]
         public IResult Update(IFormFile file, CarImage carImage)
         {
             carImage.ImagePath = Environment.CurrentDirectory + @"\" + FileHelper.Update(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
@@ -64,6 +70,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
+        [CacheRemoveAspects("ICarImage.Get")]
         public IResult Delete(CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageExists(carImage.Id));
@@ -76,6 +83,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [CacheAspect()]
         public IDataResult<List<CarImage>> GetAllByCarId(int id)
         {
             return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id),
