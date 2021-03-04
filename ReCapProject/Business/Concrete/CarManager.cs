@@ -8,6 +8,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
@@ -52,6 +53,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect()]
+        //[PerformanceAspect(5)]
         public IDataResult<List<Car>> GetAll()
         {
             var result = _carDal.GetAll();

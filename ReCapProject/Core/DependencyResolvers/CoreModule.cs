@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Caching.Microsoft;
@@ -17,6 +18,8 @@ namespace Core.DependencyResolvers
 
             serviceCollection.AddMemoryCache();
             serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+
+            serviceCollection.AddSingleton<Stopwatch>();
         }
     }
 }
