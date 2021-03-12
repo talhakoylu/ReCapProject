@@ -1,0 +1,6 @@
+<div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
+    <div class="spinner-grow text-info" role="status" aria-hidden="true"></div>
+</div>
+<ul *ngIf="dataLoaded==true" class="list-group">
+    <li *ngFor="let color of colors" class="list-group-item list-group-item-dark">{{color.colorName}}</li>
+</ul>

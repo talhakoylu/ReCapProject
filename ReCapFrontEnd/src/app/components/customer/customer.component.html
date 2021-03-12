@@ -1,0 +1,26 @@
+<div *ngIf="dataLoaded==false" class="container d-flex mt-3">
+    <strong>Loading...</strong>
+    <div class="spinner-grow text-info ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
+<table *ngIf="dataLoaded==true" class="container table table-dark table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <th scope="row">{{customer.userId}}</th>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.companyName}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
