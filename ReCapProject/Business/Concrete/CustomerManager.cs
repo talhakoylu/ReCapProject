@@ -12,6 +12,7 @@ using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation;
 
 namespace Business.Concrete
@@ -29,6 +30,13 @@ namespace Business.Concrete
         public IDataResult<List<Customer>> GetAll()
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomerGetAllSuccess);
+        }
+
+        [CacheAspect()]
+        public IDataResult<List<CustomerDetailDto>> GetAllDetails()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetailsDto(),
+                Messages.CustomerGetAllSuccess);
         }
 
         [CacheAspect()]
