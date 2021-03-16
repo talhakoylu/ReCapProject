@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-sm-3">
+            <div class="card">
+                <h5 class="card-header">Duyuru</h5>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-9">
+            <ngb-carousel *ngIf="images">
+                <ng-template ngbSlide *ngFor="let image of images">
+                  <div class="picsum-img-wrapper">
+                    <img src="https://localhost:44327/{{image.imagePath}}" class="d-block w-100" height="400px">
+                  </div>
+                  <div class="carousel-caption" *ngIf="cars">
+                    <h3>{{cars[0].description}}</h3>
+                  </div>
+                </ng-template>
+            </ngb-carousel>
+
+            <div class="card mt-2" *ngIf="cars"> 
+                <h5 class="card-header">Özellikler</h5>
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-sm-6">
+                        <h5 class="card-title">Araç Modeli</h5>
+                        <p class="card-text">{{cars[0].description}}</p>
+                        <h5 class="card-title">Yıl</h5>
+                        <p class="card-text">{{cars[0].modelYear}}</p>
+                        <button class="btn btn-info">Uygunluk Durumunu Kontrol Et</button>
+                      </div>
+                      <div class="col-sm-6">
+                        <h5 class="card-title">Markası</h5>
+                        <p class="card-text">{{cars[0].brandName}}</p>
+                        <h5 class="card-title">Araç Rengi</h5>
+                        <p class="card-text">{{cars[0].colorName}}</p>
+                        <h5 class="card-title">Araç Günlük Kirası</h5>
+                        <p class="card-text">{{cars[0].dailyPrice}}</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

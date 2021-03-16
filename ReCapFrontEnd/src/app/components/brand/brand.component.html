@@ -2,5 +2,7 @@
     <div class="spinner-grow text-info" role="status" aria-hidden="true"></div>
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
-    <li *ngFor="let brand of brands" class="list-group-item list-group-item-dark">{{brand.brandName}}</li>
+    <li [class] = "getAllBrandClass()" routerLink = "/cars">Tüm Araçlar</li>
+    <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands" 
+    [class]="getCurrentBrandClass(brand)" routerLink = "/cars/brand/{{brand.brandId}}">{{brand.brandName}}</li>
 </ul>

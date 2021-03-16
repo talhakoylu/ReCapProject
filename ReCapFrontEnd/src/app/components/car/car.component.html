@@ -7,6 +7,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col"></th>
         <th scope="col">Description</th>
         <th scope="col">Brand</th>
         <th scope="col">Color</th>
@@ -15,8 +16,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let car of cars">
+      <tr *ngFor="let car of cars" (click)="setCurrentCar(car)" routerLink="/car-detail/{{car.carId}}">
         <th scope="row">{{car.carId}}</th>
+        <td><img src="{{car.imagePath}}" alt="" width="100px" height="80px"></td>
         <td>{{car.description}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>

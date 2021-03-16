@@ -15,6 +15,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { RentalsComponent } from './pages/rentals/rentals.component';
 import { CustomersComponent } from './pages/customers/customers.component';
+import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,12 +32,15 @@ import { CustomersComponent } from './pages/customers/customers.component';
     HomeComponent,
     Error404Component,
     RentalsComponent,
-    CustomersComponent
+    CustomersComponent,
+    CarDetailPageComponent,
+    CarDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

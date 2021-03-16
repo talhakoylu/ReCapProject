@@ -1,0 +1,6 @@
+{
+    "/images": {
+      "target": "https://localhost:44327",
+      "secure": false
+    }
+  }

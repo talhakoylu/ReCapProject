@@ -2,5 +2,7 @@
     <div class="spinner-grow text-info" role="status" aria-hidden="true"></div>
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
-    <li *ngFor="let color of colors" class="list-group-item list-group-item-dark">{{color.colorName}}</li>
+    <li [class] = "getAllColorClass()" routerLink = "/cars">Tüm Araçlar</li>
+    <li (click)="setCurrentColor(color)" *ngFor="let color of colors" 
+    [class]="getCurrentColorClass(color)" routerLink = "/cars/color/{{color.colorId}}">{{color.colorName}}</li>
 </ul>
