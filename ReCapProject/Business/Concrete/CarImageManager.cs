@@ -43,7 +43,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
-        [CacheRemoveAspects("ICarImage.Get")]
+        [CacheRemoveAspects("ICarImageService.Get")]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageLimit(carImage.CarId));
@@ -59,10 +59,10 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
-        [CacheRemoveAspects("ICarImage.Get")]
+        [CacheRemoveAspects("ICarImageService.Get")]
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = Environment.CurrentDirectory + @"\" + FileHelper.Update(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
+            carImage.ImagePath = FileHelper.Add(file);
             carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult("başarılı mesajı buraya gelecek");
@@ -70,7 +70,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
-        [CacheRemoveAspects("ICarImage.Get")]
+        [CacheRemoveAspects("ICarImageService.Get")]
         public IResult Delete(CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageExists(carImage.Id));
@@ -118,11 +118,11 @@ namespace Business.Concrete
 
         private List<CarImage> CheckIfCarImageNull(int id)
         {
-            string path = @"\uploads\images\default-img.jpg";
+            string path = @"images\default-img.jpg";
             var result = _carImageDal.GetAll(c => c.CarId == id).Any();
             if (!result)
             {
-                return new List<CarImage> { new CarImage { CarId = id, ImagePath = path, Date = DateTime.Now } };
+                return new List<CarImage> { new CarImage { CarId = id, ImagePath = path.Replace("\\", "/"), Date = DateTime.Now } };
             }
             return _carImageDal.GetAll(p => p.CarId == id);
         }
