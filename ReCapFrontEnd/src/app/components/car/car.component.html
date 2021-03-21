@@ -3,7 +3,8 @@
     <div class="spinner-grow text-info ms-auto" role="status" aria-hidden="true"></div>
 </div>
 
-<table *ngIf="dataLoaded==true" class="table table-dark table-striped">
+<app-car-filter></app-car-filter>
+<table *ngIf="dataLoaded==true" class="table table-striped table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>

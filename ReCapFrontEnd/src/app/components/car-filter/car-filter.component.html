@@ -1,0 +1,27 @@
+<div class="card mb-2">
+    <div class="card-header text-center">
+        Filters
+    </div>
+    <div class="card-body">
+
+        <div class="row g-3 justify-content-evenly">
+            <div class="col-lg col-sm-6">
+                <select [(ngModel)]="filterBrand" class="form-select form-select mb-3" aria-label=".form-select-lg example">
+                    <option *ngFor="let brand of brands" [selected] = "getSelectedBrand(brand.brandId)" [value] = "brand.brandId">{{brand.brandName}}</option>
+                </select>
+            </div>
+            <div class="col-lg col-sm-6">
+                <select [(ngModel)]="filterColor" class="form-select form-select mb-3" aria-label=".form-select-lg example">
+                    <option *ngFor="let color of colors" [selected] = "getSelectedColor(color.colorId)" [value]="color.colorId">{{color.colorName}}</option>
+                </select>
+            </div>
+            <div class="col-lg-auto col-sm-12">
+                <button *ngIf="!filterBrand || !filterColor" type="button" class="btn btn-success me-3" disabled>Filtrele</button>
+                <button *ngIf="filterBrand && filterColor" type="button" class="btn btn-success me-3" routerLink="/cars/filter/{{filterBrand}}/{{filterColor}}">Filtrele</button>
+                <button type="button" class="btn btn-warning" routerLink="/cars">Temizle</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
