@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.BusinessAspects.Autofac;
@@ -40,13 +41,20 @@ namespace Business.Concrete
         }
 
         [CacheAspect()]
+        public IDataResult<RentalDetailDto> GetRentalDetailByCarId(int carId)
+        {
+            var result = _rentalDal.GetRentalDetails(r => r.CarId == carId).LastOrDefault();
+            return new SuccessDataResult<RentalDetailDto>(result, Messages.RentalGetAllSuccess);
+        }
+
+        [CacheAspect()]
         public IDataResult<List<RentalDetailDto>> GetAllRentalDetail()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(),
                 Messages.RentalGetAllSuccess);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(RentalValidator))]
         [CacheRemoveAspects("IRentalService.Get")]
         public IResult Add(Rental rental)

@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapProjectContext>, IRentalDal
     {
-        public List<RentalDetailDto> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
+        public List<RentalDetailDto> GetRentalDetails(Expression<Func<RentalDetailDto, bool>> filter = null)
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
@@ -32,9 +32,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  FirstName = user.FirstName,
                                  LastName = user.LastName,
                                  RentDate = rental.RentDate,
-                                 ReturnDate = (DateTime)rental.ReturnDate
+                                 ReturnDate = rental.ReturnDate,
+                                 CarId = car.CarId,
+                                 UserId = user.Id
                              };
-                return result.ToList();
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
             }
         }
     }
