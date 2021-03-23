@@ -24,123 +24,224 @@ saved on local storage for an hour.
 ## Database Tables
 #### Brands
 <table>
-<thead>
-  <tr>
-    <th class="tg-baqh" colspan="4"><span style="font-weight:bold">Brands</span></th>
-  </tr>
-</thead>
 <tbody>
+    </br>
   <tr>
-    <td class="tg-1wig">Primary Key</td>
-    <td class="tg-fymr">Name</td>
-    <td class="tg-fymr">Data Type</td>
-    <td class="tg-1wig">Allow Nulls</td>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th class="tg-baqh" colspan="4"><span style="font-weight:bold">Brands</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">✔</td>
+                <td class="tg-0pky">BrandId</td>
+                <td class="tg-0pky">Int</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0pky">BrandName</td>
+                <td class="tg-0pky">varchar(50)</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+            </tbody>
+         </table>
+    </td>
+    <td>
+       <table>
+        <thead>
+          <tr>
+            <th class="tg-baqh" colspan="4"><span style="font-weight:bold">CarImages</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tg-1wig">Primary Key</td>
+            <td class="tg-fymr">Name</td>
+            <td class="tg-fymr">Data Type</td>
+            <td class="tg-1wig">Allow Nulls</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax">✔</td>
+            <td class="tg-0pky">Id</td>
+            <td class="tg-0pky">Int</td>
+            <td class="tg-0lax">❌</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0pky">CarId</td>
+            <td class="tg-0pky">Int</td>
+            <td class="tg-0lax">❌</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax">ImagePath</td>
+            <td class="tg-0lax">varchar(MAX)</td>
+            <td class="tg-0lax">✅</td>
+          </tr>
+          <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax">Date</td>
+            <td class="tg-0lax">datetime</td>
+            <td class="tg-0lax">❌</td>
+          </tr>
+        </tbody>
+       </table>
+    </td>
   </tr>
   <tr>
-    <td class="tg-0lax">✔</td>
-    <td class="tg-0pky">BrandId</td>
-    <td class="tg-0pky">Int</td>
-    <td class="tg-0lax">❌</td>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th class="tg-baqh" colspan="4"><span style="font-weight:bold">Cars</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-1wig">Primary Key</td>
+                <td class="tg-fymr">Name</td>
+                <td class="tg-fymr">Data Type</td>
+                <td class="tg-1wig">Allow Nulls</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">✔</td>
+                <td class="tg-0pky">CarId</td>
+                <td class="tg-0pky">int</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0pky">BrandId</td>
+                <td class="tg-0pky">int</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax">ColorId</td>
+                <td class="tg-0lax">int</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax">ModelYear</td>
+                <td class="tg-0lax">int</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax">DailyPrice</td>
+                <td class="tg-0lax">decimal(18,0)</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax">Description</td>
+                <td class="tg-0lax">nvarchar(250)</td>
+                <td class="tg-0lax">❌</td>
+              </tr>
+            </tbody>
+         </table>
+    </td>
+    <td>
+    <table>
+        <thead>
+          <tr>
+            <th colspan="4">Colors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Key</td>
+            <td>Name</td>
+            <td>Data Type</td>
+            <td>Allow Nulls</td>
+          </tr>
+          <tr>
+            <td>✔</td>
+            <td>ColorId</td>
+            <td>int</td>
+            <td>❌</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>ColorName</td>
+            <td>int</td>
+            <td>❌</td>
+          </tr>
+        </tbody>
+     </table>
+    </td>
   </tr>
   <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0pky">BrandName</td>
-    <td class="tg-0pky">varchar(50)</td>
-    <td class="tg-0lax">❌</td>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th colspan="4">Customers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td>This table doesn't<br>contains any primay<br>key</td>
+                <td>UserId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>CompanyName</td>
+                <td>nvarchar(150)</td>
+                <td>❌</td>
+              </tr>
+            </tbody>
+        </table>
+    </td>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th colspan="4">OperationsClaims</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td>✔</td>
+                <td>Id</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Name</td>
+                <td>varchar(150)</td>
+                <td>❌</td>
+              </tr>
+            </tbody>
+         </table>
+    </td>
   </tr>
 </tbody>
 </table>
 
-#### Car Images
-<table>
-<thead>
-  <tr>
-    <th class="tg-baqh" colspan="4"><span style="font-weight:bold">CarImages</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-1wig">Primary Key</td>
-    <td class="tg-fymr">Name</td>
-    <td class="tg-fymr">Data Type</td>
-    <td class="tg-1wig">Allow Nulls</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">✔</td>
-    <td class="tg-0pky">Id</td>
-    <td class="tg-0pky">Int</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0pky">CarId</td>
-    <td class="tg-0pky">Int</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax">ImagePath</td>
-    <td class="tg-0lax">varchar(MAX)</td>
-    <td class="tg-0lax">✅</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax">Date</td>
-    <td class="tg-0lax">datetime</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-</tbody>
-</table>
-
-#### Cars
-<table>
-<thead>
-  <tr>
-    <th class="tg-baqh" colspan="4"><span style="font-weight:bold">Cars</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-1wig">Primary Key</td>
-    <td class="tg-fymr">Name</td>
-    <td class="tg-fymr">Data Type</td>
-    <td class="tg-1wig">Allow Nulls</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">✔</td>
-    <td class="tg-0pky">CarId</td>
-    <td class="tg-0pky">int</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0pky">BrandId</td>
-    <td class="tg-0pky">int</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax">ColorId</td>
-    <td class="tg-0lax">int</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax">ModelYear</td>
-    <td class="tg-0lax">int</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax">DailyPrice</td>
-    <td class="tg-0lax">decimal(18,0)</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax">Description</td>
-    <td class="tg-0lax">nvarchar(250)</td>
-    <td class="tg-0lax">❌</td>
-  </tr>
-</tbody>
-</table>
