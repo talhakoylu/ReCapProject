@@ -8,7 +8,10 @@
 </a>
 
 # ReCap Project
-<p>A car rental project developed with C# and .Net Core Framework. In development phase, N-Layered Architecture model was followed.</p>
+A car rental project developed with C# and .Net Core Framework. In development phase, N-Layered Architecture model was followed.
+You can perform basic CRUD operations with this program. Also, this program has JWT Bearer system. 
+CRUD operaitons will work if the user has right claims. For caching, all of the listing and query processes (except add, update, delete) are 
+saved on local storage for an hour.
 
 ## Used Technologies and Their Versions
 [![C-Sharp](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/csharp/)
@@ -40,6 +43,7 @@
     <td class="tg-0lax">❌</td>
   </tr>
   <tr>
+      
     <td class="tg-0lax"></td>
     <td class="tg-0pky">BrandName</td>
     <td class="tg-0pky">varchar(50)</td>
