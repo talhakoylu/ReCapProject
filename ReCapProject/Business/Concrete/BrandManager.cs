@@ -41,7 +41,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId), Messages.BrandGetSuccess);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
         [CacheRemoveAspects("IBrandService.Get")]
         public IResult Add(Brand brand)
@@ -50,7 +50,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandAddSuccess);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
         [CacheRemoveAspects("IBrandService.Get")]
         public IResult Update(Brand brand)
@@ -65,7 +65,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandUpdateSuccess);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [CacheRemoveAspects("IBrandService.Get")]
         public IResult Delete(Brand brand)
         {
