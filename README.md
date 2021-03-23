@@ -19,3 +19,125 @@
 [![Fluent-Validation](https://img.shields.io/badge/Fluent%20Validation%20v9.5.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://fluentvalidation.net/)
 
 ## Database Tables
+#### Brands
+<table>
+<thead>
+  <tr>
+    <th class="tg-baqh" colspan="4"><span style="font-weight:bold">Brands</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-1wig">Primary Key</td>
+    <td class="tg-fymr">Name</td>
+    <td class="tg-fymr">Data Type</td>
+    <td class="tg-1wig">Allow Nulls</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">✔</td>
+    <td class="tg-0pky">BrandId</td>
+    <td class="tg-0pky">Int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0pky">BrandName</td>
+    <td class="tg-0pky">varchar(50)</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+</tbody>
+</table>
+
+#### Car Images
+<table>
+<thead>
+  <tr>
+    <th class="tg-baqh" colspan="4"><span style="font-weight:bold">CarImages</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-1wig">Primary Key</td>
+    <td class="tg-fymr">Name</td>
+    <td class="tg-fymr">Data Type</td>
+    <td class="tg-1wig">Allow Nulls</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">✔</td>
+    <td class="tg-0pky">Id</td>
+    <td class="tg-0pky">Int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0pky">CarId</td>
+    <td class="tg-0pky">Int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">ImagePath</td>
+    <td class="tg-0lax">varchar(MAX)</td>
+    <td class="tg-0lax">✅</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Date</td>
+    <td class="tg-0lax">datetime</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+</tbody>
+</table>
+
+#### Cars
+<table>
+<thead>
+  <tr>
+    <th class="tg-baqh" colspan="4"><span style="font-weight:bold">Cars</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-1wig">Primary Key</td>
+    <td class="tg-fymr">Name</td>
+    <td class="tg-fymr">Data Type</td>
+    <td class="tg-1wig">Allow Nulls</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">✔</td>
+    <td class="tg-0pky">CarId</td>
+    <td class="tg-0pky">int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0pky">BrandId</td>
+    <td class="tg-0pky">int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">ColorId</td>
+    <td class="tg-0lax">int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">ModelYear</td>
+    <td class="tg-0lax">int</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">DailyPrice</td>
+    <td class="tg-0lax">decimal(18,0)</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Description</td>
+    <td class="tg-0lax">nvarchar(250)</td>
+    <td class="tg-0lax">❌</td>
+  </tr>
+</tbody>
+</table>
