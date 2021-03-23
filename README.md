@@ -7,6 +7,8 @@
     <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
 
+<p align="center"><img src="https://i.imgur.com/S7YH4eA.png" width = 500px ></p>
+
 # ReCap Project
 A car rental project developed with C# and .Net Core Framework. In development phase, N-Layered Architecture model was followed.
 You can perform basic CRUD operations with this program. Also, this program has JWT Bearer system. 
@@ -20,6 +22,240 @@ saved on local storage for an hour.
 [![Entity-Framework-Core](https://img.shields.io/badge/Entity%20Framework%20Core%20v3.1.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://docs.microsoft.com/en-us/ef/)
 [![Autofac](https://img.shields.io/badge/Autofac%20v6.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://autofac.org/)
 [![Fluent-Validation](https://img.shields.io/badge/Fluent%20Validation%20v9.5.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://fluentvalidation.net/)
+
+## Layers
+### Business Layer
+Business layer is contain business and logic rules. And also contains service and manager classes.
+
+<details>
+  <summary>Business Layer File Structure</summary>      
+    <br> 
+    
+        Business
+          |-- Abstract
+          |   |-- IAuthService.cs
+          |   |-- IBrandService.cs
+          |   |-- ICarImageService.cs
+          |   |-- ICarService.cs
+          |   |-- IColorService.cs
+          |   |-- ICustomerService.cs
+          |   |-- IPaymentService.cs
+          |   |-- IRentalService.cs
+          |   |-- IUserService.cs
+          |-- Business.csproj
+          |-- BusinessAspects
+          |   |-- Autofac
+          |   |   |-- SecuredOperation.cs
+          |-- Concrete
+          |   |-- AuthManager.cs
+          |   |-- BrandManager.cs
+          |   |-- CarImageManager.cs
+          |   |-- CarManager.cs
+          |   |-- ColorManager.cs
+          |   |-- CustomerManager.cs
+          |   |-- PaymentManager.cs
+          |   |-- RentalManager.cs
+          |   |-- UserManager.cs
+          |-- Constants
+          |   |-- Messages.cs
+          |-- DependencyResolvers
+          |   |-- Autofac
+          |   |   |-- AutofacBusinessModule.cs
+          |-- ValidationRules
+          |   |-- FluentValidation
+          |   |   |-- BrandValidator.cs
+          |   |   |-- CarImageValidator.cs
+          |   |   |-- CarValidator.cs
+          |   |   |-- ColorValidator.cs
+          |   |   |-- CustomerValidator.cs
+          |   |   |-- RentalValidator.cs
+          |   |   |-- UserValidator.cs
+</details>
+
+### ConsoleUI Layer
+Before building the WebAPI layer, this layer used for service tests.
+
+<details>
+  <summary>ConsoleUI Layer File Structure</summary>      
+  <br>
+  
+        ConsoleUI
+           |   |-- ConsoleUI.csproj
+           |   |-- Program.cs
+</details>
+
+### Core Layer
+The most important layer of the project is Core Layer. Core layer contain general rules and functions. That's why, Core doesn't have any dependency to another layer. Core layer is the heart of the project. Aspects (validation, cache, performance etc.), Cross Cutting Conserns (Cache, Validation), general entities and bases, Extensions, Utilities (Security, Result structure, IoC etc.) are located in this layer.
+
+<details>
+  <summary>Core Layer File Structure</summary>      
+  <br>
+  
+        Core
+           |   |-- Aspects
+           |   |   |-- Autofac
+           |   |   |   |-- Caching
+           |   |   |   |   |-- CacheAspect.cs
+           |   |   |   |   |-- CacheRemoveAspects.cs
+           |   |   |   |-- Performance
+           |   |   |   |   |-- PerformanceAspect.cs
+           |   |   |   |-- Transaction
+           |   |   |   |   |-- TransactionScopeAspect.cs
+           |   |   |   |-- Validation
+           |   |   |   |   |-- ValidationAspect.cs
+           |   |-- Core.csproj
+           |   |-- CrossCuttingConcerns
+           |   |   |-- Caching
+           |   |   |   |-- ICacheManager.cs
+           |   |   |   |-- Microsoft
+           |   |   |   |   |-- MemoryCacheManager.cs
+           |   |   |-- Validation
+           |   |   |   |-- FluentValidation
+           |   |   |   |   |-- ValidationTool.cs
+           |   |-- DataAccess
+           |   |   |-- EntityFramework
+           |   |   |   |-- EfEntityRepositoryBase.cs
+           |   |   |-- IEntityRepository.cs
+           |   |-- DependencyResolvers
+           |   |   |-- CoreModule.cs
+           |   |-- Entities
+           |   |   |-- Concrete
+           |   |   |   |-- OperationClaim.cs
+           |   |   |   |-- OperationClaimDto.cs
+           |   |   |   |-- User.cs
+           |   |   |   |-- UserOperationClaim.cs
+           |   |   |-- IDto.cs
+           |   |   |-- IEntity.cs
+           |   |-- Extensions
+           |   |   |-- ClaimExtensions.cs
+           |   |   |-- ClaimsPrincipalExtensions.cs
+           |   |   |-- ServiceCollectionExtensions.cs
+           |   |-- Utilities
+           |   |   |-- Business
+           |   |   |   |-- BusinessRules.cs
+           |   |   |-- Helpers
+           |   |   |   |-- FileHelper.cs
+           |   |   |-- Interceptors
+           |   |   |   |-- AspectInterceptorSelector.cs
+           |   |   |   |-- MethodInterception.cs
+           |   |   |   |-- MethodInterceptionBaseAttribute.cs
+           |   |   |-- IoC
+           |   |   |   |-- ICoreModule.cs
+           |   |   |   |-- ServiceTool.cs
+           |   |   |-- Results
+           |   |   |   |-- DataResult.cs
+           |   |   |   |-- ErrorDataResult.cs
+           |   |   |   |-- ErrorResult.cs
+           |   |   |   |-- IDataResult.cs
+           |   |   |   |-- IResult.cs
+           |   |   |   |-- Result.cs
+           |   |   |   |-- SuccessDataResult.cs
+           |   |   |   |-- SuccessResult.cs
+           |   |   |-- Security
+           |   |   |   |-- Encryption
+           |   |   |   |   |-- SecurityKeyHelper.cs
+           |   |   |   |   |-- SigningCredentialsHelper.cs
+           |   |   |   |-- Hashing
+           |   |   |   |   |-- HashingHelper.cs
+           |   |   |   |-- JWT
+           |   |   |   |   |-- AccessToken.cs
+           |   |   |   |   |-- ITokenHelper.cs
+           |   |   |   |   |-- JwtHelper.cs
+           |   |   |   |   |-- TokenOptions.cs
+
+</details>
+
+### DataAccess Layer
+EntityFramework configurations were located in this layer. DataAccessLayer classes also located in this layer. Every process in DataAccess layers are responsible for the database connectivity.
+<details>
+  <summary>DataAccess Layer File Structure</summary>      
+  <br>
+  
+         DataAccess
+           |   |-- Abstract
+           |   |   |-- IBrandDal.cs
+           |   |   |-- ICarDal.cs
+           |   |   |-- ICarImageDal.cs
+           |   |   |-- IColorDal.cs
+           |   |   |-- ICustomerDal.cs
+           |   |   |-- IPaymentDal.cs
+           |   |   |-- IRentalDal.cs
+           |   |   |-- IUserDal.cs
+           |   |-- Concrete
+           |   |   |-- EntityFramework
+           |   |   |   |-- Context
+           |   |   |   |   |-- ReCapProjectContext.cs
+           |   |   |   |-- EfBrandDal.cs
+           |   |   |   |-- EfCarDal.cs
+           |   |   |   |-- EfCarImageDal.cs
+           |   |   |   |-- EfColorDal.cs
+           |   |   |   |-- EfCustomerDal.cs
+           |   |   |   |-- EfPaymentDal.cs
+           |   |   |   |-- EfRentalDal.cs
+           |   |   |   |-- EfUserDal.cs
+           |   |   |-- InMemory
+           |   |   |   |-- InMemoryBrandDal.cs
+           |   |   |   |-- InMemoryCarDal.cs
+           |   |   |   |-- InMemoryColorDal.cs
+           |   |-- DataAccess.csproj
+
+</details>
+
+### Entities Layer
+Created objects for database tables are in this layer.
+
+<details>
+  <summary>Entities Layer File Structure</summary>      
+  <br>
+  
+         Entities
+           |   |-- Concrete
+           |   |   |-- Brand.cs
+           |   |   |-- Car.cs
+           |   |   |-- CarImage.cs
+           |   |   |-- Color.cs
+           |   |   |-- Customer.cs
+           |   |   |-- Payment.cs
+           |   |   |-- Rental.cs
+           |   |-- DTOs
+           |   |   |-- CarDetailDto.cs
+           |   |   |-- CustomerDetailDto.cs
+           |   |   |-- PaymentDto.cs
+           |   |   |-- RentalDetailDto.cs
+           |   |   |-- UserForLoginDto.cs
+           |   |   |-- UserForRegisterDto.cs
+           |   |-- Entities.csproj
+</details>
+
+### WebAPI Layer
+Our project became online with the WebAPI layer. Wrote controllers for every business services. In this way, we can control the project on the web. WebAPI layer contains API configurations and controllers and also uploaded images were stored in wwwroot/uploads/images folder.
+
+<details>
+  <summary>ConsoleUI Layer File Structure</summary>      
+  <br>
+  
+         WebAPI
+           |   |-- Controllers
+           |   |   |-- AuthController.cs
+           |   |   |-- BrandsController.cs
+           |   |   |-- CarImagesController.cs
+           |   |   |-- CarsController.cs
+           |   |   |-- ColorsController.cs
+           |   |   |-- CustomersController.cs
+           |   |   |-- PaymentsController.cs
+           |   |   |-- RentalsController.cs
+           |   |   |-- UsersController.cs
+           |   |-- Program.cs
+           |   |-- Properties
+           |   |   |-- launchSettings.json
+           |   |-- Startup.cs
+           |   |-- WebAPI.csproj
+           |   |-- appsettings.Development.json
+           |   |-- appsettings.json
+           |   |-- wwwroot
+           |   |   |-- uploads
+           |   |   |   |-- images
+</details>
 
 ## Database Tables
 You can see and examine the tables below.
@@ -441,6 +677,9 @@ And also you can add the tables which ones required for the project, via followi
 
 ## Important Notes About Project
 - Do not forget to change your API Key from <a href="https://github.com/talhakoylu/ReCapProject/blob/master/ReCapProject/WebAPI/appsettings.json">appsetting.json</a> which one is in the WebAPI layer.
+
+## Distribution
+This project licenced and distributed under MIT Licence. Please read the <a href="https://github.com/talhakoylu/ReCapProject/blob/master/LICENSE">LICENCE</a> file for more information.
 
 ## Author
 Ahmet Talha KÖYLÜ - <a href="https://github.com/talhakoylu/">Github</a> - <a href="https://linkedin.com/in/talhakoylu">LinkedIn</a>
