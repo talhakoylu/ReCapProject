@@ -23,6 +23,8 @@ saved on local storage for an hour.
 
 ## Database Tables
 You can see and examine the tables below.
+And also you can add the tables which ones required for the project, via following SQL script file.
+<b>SQL Script File:</b> <a href="https://github.com/talhakoylu/ReCapProject/blob/master/recap.sql">recap.sql</a>
 <table>
 <tbody>
     </br>
@@ -242,6 +244,203 @@ You can see and examine the tables below.
          </table>
     </td>
   </tr>
+  <tr>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th colspan="4">Payments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td>✔</td>
+                <td>Id</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>UserId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>CarId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ProcessDate</td>
+                <td>date</td>
+                <td>✅</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>TotalAmount</td>
+                <td>money</td>
+                <td>✅</td>
+              </tr>
+            </tbody>
+        </table>
+    </td>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th colspan="4">Rentals</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td>✔</td>
+                <td>Id</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>CarId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>CustomerId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>RentDate</td>
+                <td>datetime</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ReturnDate</td>
+                <td>datetime</td>
+                <td>✅</td>
+              </tr>
+            </tbody>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th colspan="4">UserOperationClaims</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td>✔</td>
+                <td>Id</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>UserId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>OperationClaimId</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+            </tbody>
+         </table>
+    </td>
+    <td>
+        <table>
+            <thead>
+              <tr>
+                <th colspan="4">Users</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Key</td>
+                <td>Name</td>
+                <td>Data Type</td>
+                <td>Allow Nulls</td>
+              </tr>
+              <tr>
+                <td>✔</td>
+                <td>Id</td>
+                <td>int</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>FirstName</td>
+                <td>varchar(50)</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>LastName</td>
+                <td>varchar(50)</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Email</td>
+                <td>varchar(150)</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>PasswordHash</td>
+                <td>varbinary(500)</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>PasswordSalt</td>
+                <td>varbinary(500)</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Status</td>
+                <td>bit</td>
+                <td>❌</td>
+              </tr>
+            </tbody>
+         </table>
+    </td>
+  </tr>
 </tbody>
 </table>
 
+## Important Notes About Project
+- Do not forget to change your API Key from <a href="https://github.com/talhakoylu/ReCapProject/blob/master/ReCapProject/WebAPI/appsettings.json">appsetting.json</a> which one is in the WebAPI layer.
+
+## Author
+Ahmet Talha KÖYLÜ - <a href="https://github.com/talhakoylu/">Github</a> - <a href="https://linkedin.com/in/talhakoylu">LinkedIn</a>
