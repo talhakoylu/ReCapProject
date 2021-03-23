@@ -43,7 +43,6 @@ saved on local storage for an hour.
     <td class="tg-0lax">❌</td>
   </tr>
   <tr>
-      
     <td class="tg-0lax"></td>
     <td class="tg-0pky">BrandName</td>
     <td class="tg-0pky">varchar(50)</td>
