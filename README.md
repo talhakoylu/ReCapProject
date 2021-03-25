@@ -129,6 +129,9 @@ The most important layer of the project is Core Layer. Core layer contain genera
            |   |-- Extensions
            |   |   |-- ClaimExtensions.cs
            |   |   |-- ClaimsPrincipalExtensions.cs
+           |   |   |-- ErrorDetails.cs
+           |   |   |-- ExceptionMiddleware.cs
+           |   |   |-- ExceptionMiddlewareExtensions.cs
            |   |   |-- ServiceCollectionExtensions.cs
            |   |-- Utilities
            |   |   |-- Business
@@ -162,6 +165,7 @@ The most important layer of the project is Core Layer. Core layer contain genera
            |   |   |   |   |-- ITokenHelper.cs
            |   |   |   |   |-- JwtHelper.cs
            |   |   |   |   |-- TokenOptions.cs
+
 
 </details>
 
@@ -413,7 +417,7 @@ And also you can add the tables which ones required for the project, via followi
           <tr>
             <td></td>
             <td>ColorName</td>
-            <td>int</td>
+            <td>varchar(50)</td>
             <td>❌</td>
           </tr>
         </tbody>
