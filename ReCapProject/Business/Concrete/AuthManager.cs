@@ -42,25 +42,32 @@ namespace Business.Concrete
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
+            var userToCheckWithMail = _userService.GetByMail(userForLoginDto.Email);
+            if (!userToCheckWithMail.Success)
+            {
+                return new ErrorDataResult<User>("UserToCheckSuccess Error message");
+            }
+
+            var userToCheck = userToCheckWithMail.Data;
+
             if (userToCheck == null)
             {
                 return new ErrorDataResult<User>(Messages.UserNotFoundError);
             }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
                 return new ErrorDataResult<User>(Messages.UserPasswordError);
             }
 
-            return new SuccessDataResult<User>(userToCheck.Data, Messages.UserLoginSuccessful);
+            return new SuccessDataResult<User>(userToCheck, Messages.UserLoginSuccessful);
         }
 
         public IResult UserExists(string email)
         {
             if (_userService.GetByMail(email).Data != null)
             {
-                return new ErrorResult("email hatası alow");
+                return new ErrorResult(Messages.UserEmailAlreadyExists);
             }
 
             return new SuccessResult();

@@ -62,6 +62,7 @@ namespace Business.Constants
         public static string UserPasswordError = "Şifre hatalı.";
         public static string UserLoginSuccessful = "Giriş başarılı.";
         public static string UserEmailAlreadyExists = "Bu email adresine sahip bir kullanıcı zaten bulunuyor.";
+        public static string UserEmailAddressNotValid = "Lütfen geçerli bir mail adresi giriniz.";
         public static string UserRegistered = "Kullanıcı başarıyla kayıt edildi.";
         public static string UserAccessTokenCreatedSuccessful = "Access token başarıyla oluşturuldu.";
         public static string AuthorizationDenied = "Bu işlem için yetkiniz bulunmuyor.";
@@ -98,6 +99,6 @@ namespace Business.Constants
         public static string UserValidatorPasswordError =
             "Şifre en az 8 karakter uzunluğunda, büyük-küçük harf ve sayı içermelidir.";
 
-        
+
     }
 }

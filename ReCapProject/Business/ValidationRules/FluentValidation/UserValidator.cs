@@ -19,7 +19,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.LastName).NotEmpty();
             RuleFor(u => u.LastName).MaximumLength(30);
             RuleFor(u => u.Email).NotEmpty();
-            RuleFor(u => u.Email).EmailAddress();
+            RuleFor(u => u.Email).Matches(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").WithMessage(Messages.UserEmailAddressNotValid);
             //RuleFor(u => u.Password).Matches(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$").WithMessage(Messages.UserValidatorPasswordError);
             //RuleFor(u => u.Password).NotEmpty();
         }
