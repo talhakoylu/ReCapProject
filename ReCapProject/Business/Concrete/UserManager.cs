@@ -62,14 +62,14 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.UserGetByIdSuccess);
         }
 
-        [CacheAspect()]
+        
         public IDataResult<User> GetByMail(string email)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email),
                 "usermanager getbymail refactor edilecek alan");
         }
 
-        [CacheAspect()]
+        
         public IDataResult<List<OperationClaimDto>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaimDto>>(_userDal.GetClaims(user), "usermanager getclaims refactor edilecek alan");
