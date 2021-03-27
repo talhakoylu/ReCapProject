@@ -1,5 +1,6 @@
 [![GitHub license](https://img.shields.io/github/license/talhakoylu/ReCapProject?style=for-the-badge)](https://github.com/talhakoylu/ReCapProject/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/talhakoylu/ReCapProject?style=for-the-badge)](https://github.com/talhakoylu/ReCapProject/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/talhakoylu/ReCapProject?style=for-the-badge)](https://github.com/talhakoylu/ReCapProject/network)
 <a href="https://www.linkedin.com/in/talhakoylu/">
     <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
@@ -19,9 +20,9 @@ saved on local storage for an hour.
 [![C-Sharp](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/csharp/)
 [![Asp-net-web-api](https://img.shields.io/badge/ASP.NET%20Web%20API-5C2D91?style=for-the-badge&logo=.net&logoColor=white)](https://dotnet.microsoft.com/apps/aspnet)
 [![MSSQL](https://img.shields.io/badge/MSSQL-004880?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)](https://www.microsoft.com/en-us/sql-server/sql-server-2019?rtc=2)
-[![Entity-Framework-Core](https://img.shields.io/badge/Entity%20Framework%20Core%20v3.1.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://docs.microsoft.com/en-us/ef/)
-[![Autofac](https://img.shields.io/badge/Autofac%20v6.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://autofac.org/)
-[![Fluent-Validation](https://img.shields.io/badge/Fluent%20Validation%20v9.5.1-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://fluentvalidation.net/)
+[![Entity-Framework-Core](https://img.shields.io/badge/EntityFramework%20Core-v3.1.1-informational?style=for-the-badge&logo=nuget)](https://docs.microsoft.com/en-us/ef/)
+[![Autofac](https://img.shields.io/badge/Autofac-v6.1-informational?style=for-the-badge&logo=nuget)](https://autofac.org/)
+[![Fluent-Validation](https://img.shields.io/badge/FluentValidation-v9.5.1-informational?style=for-the-badge&logo=nuget&labelColor=orange)](https://fluentvalidation.net/)
 
 ## Layers
 ### Business Layer
