@@ -66,6 +66,7 @@ namespace Business.Constants
         public static string UserRegistered = "Kullanıcı başarıyla kayıt edildi.";
         public static string UserAccessTokenCreatedSuccessful = "Access token başarıyla oluşturuldu.";
         public static string AuthorizationDenied = "Bu işlem için yetkiniz bulunmuyor.";
+        public static string UserUpdatePasswordError = "Şifre hatalı!";
         //customer
         public static string CustomerAddSuccess = "Müşteri başarılı bir şekilde eklendi.";
         public static string CustomerUpdateSuccess = "Müşteri başarılı bir şekilde güncellendi.";
@@ -91,6 +92,19 @@ namespace Business.Constants
         public static string CarImageUpdateSuccess = "Görsel başarılı bir şekilde güncellendi.";
         public static string CarImageDeleteSuccess = "Görsel başarılı bir şekilde silindi.";
         public static string CarImageImageLimitError = "Aracın makisumum 5 görseli bulunabilir.";
+        //CreditCard
+        public static string UserCreditCardGetAllSuccess = "Kredi kartı listesi başarılı bir şekilde getirildi.";
+        public static string UserCreditCardGetByIdSuccess = "Kredi kartı başarılı bir şekilde getirildi.";
+        public static string UserCreditCardGetAllByUserIdSuccess = "Kullanıcıya ait kredi kartı listesi başarılı bir şekilde getirildi.";
+        public static string UserCreditCardAddSuccess = "Kredi kartı başarıyla kaydedildi.";
+        public static string UserCreditCardUpdateSuccess = "Kredi kartı başarıyla güncellendi.";
+        public static string UserCreditCardDeleteSuccess = "Kredi kartı başarıyla silindi.";
+        public static string UserCreditCardControllerAddError = "Kredi kartı eklenemedi.";
+        
+        //Findeks
+        public static string FindeksGetAllSuccess = "Findeks puanları başarılı bir şekilde getirildi.";
+        public static string FindeksGetByUserIdSuccess = "Kullanıcıya ait findeks puanı başarılı bir şekilde getirildi.";
+        public static string FindeksAddSuccess = "Findeks puanı başarılı bir şekilde eklendi.";
 
 
         //Validator Messages

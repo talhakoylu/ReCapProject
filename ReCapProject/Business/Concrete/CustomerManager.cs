@@ -45,7 +45,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Customer>(_customerDal.Get(c => c.UserId == id));
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(CustomerValidator))]
         [CacheRemoveAspects("ICustomerService.Get")]
         public IResult Add(Customer customer)
@@ -54,7 +54,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CustomerAddSuccess);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(CustomerValidator))]
         [CacheRemoveAspects("ICustomerService.Get")]
         public IResult Update(Customer customer)

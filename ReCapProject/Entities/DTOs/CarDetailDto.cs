@@ -15,6 +15,7 @@ namespace Entities.DTOs
         public int ColorId { get; set; }
         public decimal DailyPrice { get; set; }
         public int ModelYear { get; set; }
+        public int? FindeksScore { get; set; }
         //public string CarImagePath { get; set; }
     }
 }

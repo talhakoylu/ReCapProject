@@ -13,7 +13,7 @@ namespace Business.Abstract
         IDataResult<List<User>> GetAll();
         IDataResult<User> GetById(int id);
         IResult Add(User user);
-        IResult Update(User user);
+        IResult Update(UserProfileUpdateDto userPasswordUpdateDto);
         IResult Delete(User user);
         IDataResult<List<OperationClaimDto>> GetClaims(User user);
         IDataResult<User> GetByMail(string email);

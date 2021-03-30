@@ -69,7 +69,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update([FromForm]Rental rental)
+        public IActionResult Update(Rental rental)
         {
             var result = _rentalService.Update(rental);
             if (result.Success)

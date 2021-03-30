@@ -30,6 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = c.ModelYear,
                                  ColorId = c.ColorId,
                                  BrandId = brand.BrandId,
+                                 FindeksScore = c.FindeksScore,
                                  //CarImagePath = carImage.ImagePath
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();

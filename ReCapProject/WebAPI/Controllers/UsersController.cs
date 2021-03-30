@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Core.Entities.Concrete;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace WebAPI.Controllers
 {
@@ -45,10 +46,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
-        public IActionResult Update(User user)
+        [HttpGet("userclaims")]
+        public IActionResult GetUserClaim(User user)
         {
-            var result = _userService.Update(user);
+            var result = _userService.GetClaims(user);
             if (result.Success)
             {
                 return Ok(result);
@@ -56,6 +57,19 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpPost("update")]
+        public IActionResult Update(UserProfileUpdateDto userProfileUpdateDto)
+        {
+            var result = _userService.Update(userProfileUpdateDto);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
 
         [HttpPost("add")]
         public IActionResult Add(User user)

@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /ReCapFrontEnd
+/ReCapProject/WebAPI/wwwroot/uploads/images/*
